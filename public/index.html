@@ -16,10 +16,19 @@
         <table class="table">
             <thead>
                 <tr>
+                    <td><input class="form-control" ng-model="part.stock_number"></td>
+                    <td><input class="form-control" ng-model="part.part_name"></td>
+                    <td><input class="form-control" ng-model="part.unit_price"></td>
+                    <td><input class="form-control" ng-model="part.units_available"></td>
+                    <td><button class="btn btn-primary" ng-click="addPart()">Insert</button></td>
+                    <td><button class="btn btn-info" ng-click="updatePart()">Update</button>
+                </tr>
+                <tr>
                     <th>Stock Number</th>
                     <th>Part Name</th>
                     <th>Unit Price</th>
                     <th>Units Available</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -28,6 +37,8 @@
                     <td>{{selectedPart.part_name}}</td>
                     <td>{{selectedPart.unit_price}}</td>
                     <td>{{selectedPart.units_available}}</td>
+                    <td><button class="btn btn-danger" ng-click="remove(contact._id)">Delete</button></td>
+                    <td><button class="btn btn-warning" ng-click="edit(contact._id)">Modify</button></td>
                 </tr>
             </tbody>
             </table>
