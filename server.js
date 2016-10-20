@@ -12,19 +12,22 @@ app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.json());
 
 app.get('/getInitialData', function (req, res) {
-  console.log('Server hit ~~~');
-  db.meanpetproject.find(function(err, docs){
-    console.log("Sending initial data from server ~~~");
-    res.send(docs);
-  });
+    console.log('Server hit ~~~');
+    var dataToSend;
+    db.meanpetproject.find(function(err, docs){
+        dataToSend = docs;
+      res.send(dataToSend);
+    });
 });
 
 app.post('/addPart', function (req, res) {
-  console.log('Testb hit');
-  // db.meanpetproject.find(function(err, docs){
-  //   console.log("Sending initial data from server ~~~");
-  //   res.send(docs);
-  // });
+    var partToAdd = req.body;
+    console.log(partToAdd.part_name);
+    console.log(partToAdd.unit_price);
+    console.log(partToAdd.units_available);
+    db.meanpetproject.insert(req.body, function(err, doc) {
+        res.json(doc);
+    });
 });
 
 app.listen(3000);
