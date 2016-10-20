@@ -7,4 +7,19 @@ myApp.controller('AppCtrl', ['$scope', '$http', function($scope, $http) {
         console.log("Received initial data from server ~~~");
         $scope.partList = req;
     });
+
+
+    $scope.addPart = function () {
+        console.log('Method active');
+        if (($scope.part != null)){
+            if (($scope.part.unit_price >= 0)&($scope.part.units_available >= 0)&($scope.part.part_name != null)){
+                console.log('wade goda');
+            } else {
+                alert('Please insert data all fields with valid data!!! :)');
+            }
+        } else {
+            alert('Please insert data into fields to create a part!!! :)');
+        }
+    };
+
 }]);

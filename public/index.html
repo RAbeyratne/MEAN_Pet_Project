@@ -16,7 +16,7 @@
         <table class="table">
             <thead>
                 <tr>
-                    <td><input class="form-control" ng-model="part.stock_number"></td>
+                    <td><input class="form-control" ng-model="part.stock_number" readonly></td>
                     <td><input class="form-control" ng-model="part.part_name"></td>
                     <td><input class="form-control" ng-model="part.unit_price"></td>
                     <td><input class="form-control" ng-model="part.units_available"></td>
@@ -37,8 +37,8 @@
                     <td>{{selectedPart.part_name}}</td>
                     <td>{{selectedPart.unit_price}}</td>
                     <td>{{selectedPart.units_available}}</td>
-                    <td><button class="btn btn-danger" ng-click="remove(contact._id)">Delete</button></td>
-                    <td><button class="btn btn-warning" ng-click="edit(contact._id)">Modify</button></td>
+                    <td><button class="btn btn-danger" ng-click="remove(selectedPart._id)">Delete</button></td>
+                    <td><button class="btn btn-warning" ng-click="edit(selectedPart._id)">Modify</button></td>
                 </tr>
             </tbody>
             </table>
