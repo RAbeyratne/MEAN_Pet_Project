@@ -12,7 +12,7 @@ app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.json());
 
 app.get('/getInitialData', function (req, res) {
-    console.log('Server hit ~~~');
+    console.log('Server [page load] hit ~~~');
     var dataToSend;
     db.meanpetproject.find(function(err, docs){
         dataToSend = docs;
@@ -20,7 +20,15 @@ app.get('/getInitialData', function (req, res) {
     });
 });
 
-app.post('/addPart', function (req, res) {
+app.get('/getpart/:id', function (req, res) {
+    var id = req.params.id;
+    console.log('Retrieving => ' + id);
+    db.meanpetproject.findOne({_id: mongojs.ObjectId(id)}, function (err, doc) {
+        res.json(doc);
+    });
+});
+
+app.post('/addpart', function (req, res) {
     var partToAdd = req.body;
     console.log(partToAdd.part_name);
     console.log(partToAdd.unit_price);
@@ -28,6 +36,26 @@ app.post('/addPart', function (req, res) {
     db.meanpetproject.insert(req.body, function(err, doc) {
         res.json(doc);
     });
+});
+
+app.delete('/deletepart/:id', function (req, res) {
+    var id = req.params.id;
+    console.log('Deleting => ' + id);
+    db.meanpetproject.remove({_id: mongojs.ObjectId(id)}, function (err, doc) {
+        res.json(doc);
+    });
+});
+
+app.put('/updatepart/:id', function (req, res) {
+    var id = req.params.id;
+    console.log(req.body.name);
+    db.meanpetproject.findAndModify({
+            query: {_id: mongojs.ObjectId(id)},
+            update: {$set: {part_name: req.body.part_name, unit_price: req.body.unit_price, units_available: req.body.units_available}},
+            new: true}, function (err, doc) {
+            res.json(doc);
+        }
+    );
 });
 
 app.listen(3000);
