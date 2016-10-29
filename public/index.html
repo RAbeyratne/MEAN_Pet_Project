@@ -7,12 +7,17 @@
     <script src="controller/indexPageController.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link rel="stylesheet" href="stylesheets/style.css">
 </head>
 
-<body ng-app='Automotive_lk'>
-    <div class="container" ng-controller='AppCtrl'>
-        <h1>MEAN PET PROJECT ~ RAMITHA</h1><br>
+<body ng-app='Automotive_lk' >
+    <div class="container" ng-controller='AppCtrl' >
+        <h1 id="title">MEAN PET PROJECT ~ RAMITHA ISHAN ABEYRATNE</h1><br>
 
+        <br>
+        <div id="image"></div>
+        <br>
+        
         <table class="table">
             <thead>
                 <tr>
@@ -23,15 +28,15 @@
                     <td><button class="btn btn-info" ng-click="updatePartDetails()">Update</button>
                 </tr>
                 <tr>
-                    <th>Part Name</th>
-                    <th>Unit Price ($)</th>
-                    <th>Units Available</th>
+                    <th><big>Part Name</big></th>
+                    <th><big>Unit Price ($)</big></th>
+                    <th><big>Units Available</big></th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
                 <tr ng-repeat="selectedPart in partList">
-                    <td>{{selectedPart.part_name}}</td>
+                    <td><b><i>{{selectedPart.part_name}}</i></b></td>
                     <td>{{selectedPart.unit_price}}</td>
                     <td>{{selectedPart.units_available}}</td>
                     <td><button class="btn btn-danger" ng-click="deletePart(selectedPart)">Delete</button></td>

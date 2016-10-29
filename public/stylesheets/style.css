@@ -1,6 +1,25 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-image: url("../images/back.jpg");
+  background-repeat: repeat;
+}
+
+div #image {
+  margin-left: auto;
+  margin-right: auto;
+  width: 35%;
+  height: 125px;
+  background-image: url('../images/car.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+div #title {
+  color: darkblue;
+  border: 3px groove;
+  background-color: yellow;
+  padding: 1%;
 }
 
 a {
